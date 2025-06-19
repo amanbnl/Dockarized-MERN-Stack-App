@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:5173"
+    depends_on:
+      - backend
+    env_file:
+    - ./frontend/.env
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    env_file:
+    - ./backend/.env
+
+  db:
+    image: postgres:15-alpine
+    env_file:
+    - ./backend/.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5433"
+
+volumes:
+  db-data:
