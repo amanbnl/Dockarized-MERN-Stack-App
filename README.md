@@ -1,12 +1,12 @@
 # MERN Stack Dockerized Example
 
-This repository demonstrates how to Dockerize a full MERN (MongoDB, Express, React, Node.js) stack application using Docker Compose. The setup includes a React frontend, an Express/Node.js backend, and a PostgreSQL database, all running in isolated containers.
+This repository demonstrates how to Dockerize a full MERN stack application using Docker Compose. The setup includes a React frontend, an Express/Node.js backend, and a PostgreSQL database, all running in isolated containers.
 
 ---
 
 ## Requirements
 
-- [Docker](https://www.docker.com/get-started) installed on your system (Docker Desktop recommended)
+- [Docker](https://www.docker.com/get-started) installed on your system
 
 ---
 
@@ -16,8 +16,7 @@ Follow these steps to get the application running locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
-   cd <repo-directory>
+   git clone https://github.com/amanbnl/Dockarized-MERN-Stack-App.git
    ```
 
 2. **Start the application using Docker Compose:**
@@ -28,85 +27,28 @@ Follow these steps to get the application running locally:
 
 3. **Access the application:**
    - Frontend: [http://localhost:3000](http://localhost:3000)
-   - Backend API: [http://localhost:8080/api/users](http://localhost:8080/api/users)
 
 ---
 
-## Project Structure & Services
+## docker-compose File overview
+The docker-compose.yml file orchestrates the following services:
 
-### docker-compose.yml Overview
+- Frontend (React):
+    - Built from the ./frontend directory, this service runs on port 5173 inside the container and is mapped to port 3000 on your local machine. It depends on the backend service to be up and running.
 
-- **frontend**
-  - Builds from `./frontend` using its Dockerfile
-  - Runs on port **3000** (mapped to container's 5173)
-  - Depends on the backend service
-  - Loads environment variables from `frontend/.env` (if present)
+- Backend (Express/Node.js):
+    - Built from the ./backend directory, this service runs on port 8080 and communicates with the PostgreSQL database. It also loads environment variables from a .env file.
 
-- **backend**
-  - Builds from `./backend` using its Dockerfile
-  - Runs on port **8080**
-  - Depends on the database service
-  - Loads environment variables from `backend/.env` (if present)
+- Database (PostgreSQL):
+    - Uses the official lightweight postgres:15-alpine image. Data is persisted via a named Docker volume (db-data). Environment variables and port mappings are defined for seamless connection with the backend.
 
-- **db**
-  - Uses the official `postgres:15-alpine` image
-  - Persists data in a Docker volume (`db-data`)
-  - Loads environment variables from `backend/.env` (for DB credentials)
-  - Exposes port **5433**
+## Contributing 👏
+- :octocat: [Pull requests](https://github.com/amanbnl/joi-validator/pulls) and 🌟 stars are always welcome.
+- For changes, please open an [issue](https://github.com/amanbnl/joi-validator/issues) first to discuss what you would like to change.
+## Contact 📩
+📧 amanbnl6501@gmail.com
 
-#### Volumes
-- `db-data`: Persists PostgreSQL data between container restarts
-
----
-
-## Application Overview
-
-### Backend (Express/Node.js)
-- Located in `/backend`
-- Provides a simple REST API at `/api/users`
-- Connects to a PostgreSQL database using environment variables for credentials
-- Main dependencies: `express`, `pg`, `dotenv`, `cors`
-
-### Frontend (React + TypeScript + Vite)
-- Located in `/frontend`
-- Fetches user data from the backend API and displays it in a table
-- Main dependencies: `react`, `react-dom`, `axios`, `vite`
-
----
-
-## Environment Variables
-
-You may need to create `.env` files in the `backend` and `frontend` directories for custom configuration. Example variables for the backend:
-
-```
-DB_USER=your_db_user
-DB_PASSWORD=your_db_password
-DB_HOST=db
-DB_PORT=5432
-DB_NAME=your_db_name
-PORT=8080
-```
-
-For the frontend, you might use:
-```
-VITE_API_BASE_URL=http://localhost:8080/api
-```
-
----
-
-## Useful Commands
-
-- **Stop all containers:**
-  ```bash
-  docker compose down
-  ```
-- **Rebuild containers after code changes:**
-  ```bash
-  docker compose up --build
-  ```
-
----
+💼 Linkedin [@AmandeepSingh](https://www.linkedin.com/in/amandeep-singh-24a82b247/)
 
 ## License
-
-This project is open source and available under the [MIT License](LICENSE). 
+MIT &copy; [AmandeepSingh](https://github.com/amanbnl)
