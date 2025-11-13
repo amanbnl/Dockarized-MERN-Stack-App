@@ -1,0 +1,43 @@
+# Node modules (always install fresh inside container)
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+package-lock.json
+
+# Local build artifacts
+build
+dist
+.cache
+coverage
+
+# IDE and OS files
+.vscode
+.idea
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+
+# Git and other VCS files
+.git
+.gitignore
+.gitlab-ci.yml
+.github
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+
+# Tests and configs (if not needed in container)
+__tests__
+jest.config.js
+cypress
+cypress.config.js
+playwright.config.js
+
+# Miscellaneous
+*.log
+*.tgz
+*.zip
+*.tar

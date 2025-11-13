@@ -1,0 +1,37 @@
+# Node modules (always installed fresh inside the container)
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Build artifacts and local environment
+dist
+build
+coverage
+.cache
+
+
+# Logs
+*.log
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+*.swp
+*.swo
+
+# Git and CI/CD metadata
+.git
+.gitignore
+.github
+.gitlab-ci.yml
+
+
+# Test folders & configs
+__tests__
+test
+jest.config.js
+cypress
+playwright.config.js

@@ -1,6 +1,6 @@
 # MERN Stack Dockerized Example
 
-This repository demonstrates how to Dockerize a full MERN stack application using Docker Compose. The setup includes a React frontend, an Express/Node.js backend, and a PostgreSQL database, all running in isolated containers.
+This repository demonstrates how to Dockerize a full MERN stack application using Docker Compose. The setup includes a React frontend, an Express/Node.js backend, and a Mongodb database, all running in isolated containers.
 
 ---
 
@@ -37,10 +37,10 @@ The docker-compose.yml file orchestrates the following services:
     - Built from the ./frontend directory, this service runs on port 5173 inside the container and is mapped to port 3000 on your local machine. It depends on the backend service to be up and running.
 
 - Backend (Express/Node.js):
-    - Built from the ./backend directory, this service runs on port 8080 and communicates with the PostgreSQL database. It also loads environment variables from a .env file.
+    - Built from the ./backend directory, this service runs on port 8080 and communicates with the Mongodb database. It also loads environment variables from a .env file.
 
-- Database (PostgreSQL):
-    - Uses the official lightweight postgres:15-alpine image. Data is persisted via a named Docker volume (db-data). Environment variables and port mappings are defined for seamless connection with the backend.
+- Database (Mongodb):
+    - Uses the official lightweight mongo:latest image. Data is persisted via a named Docker volume (db-data). Environment variables and port mappings are defined for seamless connection with the backend.
 
 ## Contributing 👏
 - :octocat: [Pull requests](https://github.com/amanbnl/joi-validator/pulls) and 🌟 stars are always welcome.
